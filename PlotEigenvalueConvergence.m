@@ -130,7 +130,7 @@ innerM = M(innerInds,innerInds);
 for iter = 1:iters
     % step 0 normalize using the L2 norm
     U = U(:);
-    U = U./normFD(U,N);
+    U = U./(sqrt(prodFD(U,U,N)));
     Uold = U;
     
     % step 1 solve
