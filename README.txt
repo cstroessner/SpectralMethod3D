@@ -1,4 +1,4 @@
-Code to reproduce the figures in "Functional Tucker approximation using Chebyshev interpolation" by S. Dolgov, D. Kressner, C.Stroessner 
+Code to reproduce the figures in "Fast global spectral methods for three-dimensional partial differential equations" by C.Stroessner and D.Kressner
 (Arxiv: TODO set link.)
 
 To perform perform the experiments you need to additionally download
