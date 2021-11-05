@@ -9,3 +9,5 @@ To perform perform the experiments you need to additionally download
 The folders spectral_method_3D, tensor_recursive, fast-poisson-solvers and chebfun need to be added to the Matlab path. The fast-poisson-solver additionally requires running the contained setup script by hand.
 
 The files Plot..., Experiment... and RuntimeComparison.m reproduce the plots and data in the paper.
+
+Note: The function ExperimentHelmholtzNonConst requires more than 8GB of RAM.
