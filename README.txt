@@ -1,4 +1,4 @@
-Code to reproduce the figures in "Fast global spectral methods for three-dimensional partial differential equations" by C.Stroessner and D.Kressner
+Code to reproduce the figures in "Fast global spectral methods for three-dimensional partial differential equations" by C. Stroessner and D. Kressner.
 (Arxiv: https://arxiv.org/abs/2111.04585.)
 
 To perform perform the experiments you need to additionally download
