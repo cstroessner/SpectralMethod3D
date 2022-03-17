@@ -10,6 +10,7 @@ if r == 3 && fastFlag == 1
     AA = opLCP{1,2}\opLCP{1,1};
     BB = opLCP{2,1}\opLCP{2,2};
     CC = opLCP{2,1}\opLCP{3,3};
+    
     DD = invtprod(D,opLCP{1,2},opLCP{2,1},opLCP{3,1});
     X = real(laplace_recursive( {full(AA),full(BB),full(CC)}, DD ));
 else

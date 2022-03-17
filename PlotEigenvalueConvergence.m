@@ -10,7 +10,7 @@ tic();
 Col = {'b','r','m','g'}; cols = 1;
 
 % initialize params
-Ns = 5:2:45; Niters = 1;
+Ns = 6:2:46; Niters = 1;
 for N = Ns
 N
 iters = 50;
@@ -159,12 +159,12 @@ close all
 set(gca,'fontsize',10)
 cols = 1;
 set(figure(1), 'Position', [0 0 470 400])
-semilogy(Ns(1:end-1),abs(lamFD(1:end-1)-lamFD(end)),'r',Ns(1:end-1),abs(lamGSM(1:end-1)-lamGSM(end)),'b')
+semilogy(Ns(1:end-1)-1,abs(lamFD(1:end-1)-lamFD(end)),'r',Ns(1:end-1)-1,max(eps,abs(lamGSM(1:end-1)-lamGSM(end))),'b')
 xlabel('n','Interpreter','latex')
 ylabel('$|\lambda[n] - \lambda[45]|$','Interpreter','latex')
 leg = legend('finite differences','global spectral method')
 set(leg,'Interpreter','latex','Location','east');
-xlim([Ns(1) Ns(end-1)])
+xlim([Ns(1)-1 Ns(end-1)-1])
 %print -depsc 'EigenvalueConvergenceSpeed'
 
 timeGSM = sum(tGSM)

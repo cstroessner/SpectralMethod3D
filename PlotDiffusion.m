@@ -19,7 +19,7 @@ f = @(x,y,z) -( ...
     pi*sin(pi*y).*sin(pi.*x) .* (exp(z).*cos(pi*z) - pi*b3(z).*sin(pi*z)).*b1(x).*b2(y) );
 
 % discretization
-N = 30;
+N = 31;
 n = [N,N,N];
 % operator
 opLCPa = getForwardOperatorDiffusionProblem(a1,a2,a3,n);
@@ -116,7 +116,7 @@ semilogy(1:numel(resNoPrec),resNoPrec,'r',1:numel(resWithPrec),resWithPrec,'b',1
 xlabel('GMRES iteration')
 ylabel('residual')
 cols = cols+1;
-leg = legend('no preconditioning','$b(x,y,z) = ||a(x,y,z)||_{\mathcal{L}^2}$','$b(x,y,z) = (1+x^2)(1+y^2)(1+z^2)$');
+leg = legend('no preconditioning','$b(x,y,z) = ||a||_{\mathcal{L}^2}$','$b(x,y,z) = (1+x^2)(1+y^2)(1+z^2)$');
 set(leg,'Interpreter','latex','Location','northeast');
 xlim([1,100])
-%print -depsc 'GMRESresidualVsIterations'
+print -depsc 'GMRESresidualVsIterations'

@@ -1,4 +1,4 @@
-% this generates the plot in Figure 4a)
+% this generates the plot in Figure 4b)
 
 addpath('spectral_method_3D')
 addpath('tensor_recursive')
@@ -7,12 +7,12 @@ clc
 close all
 rng(1)
 tic();
-Col = {'r','b','m'};
+Col = {'b','r','m'};
 
 % initialize params
 N = 21;
-h = 0.01;
-tsteps= 50;
+h = 0.0001;
+tsteps= 2000;
 n = [N,N,N];
 
 % set Functions
@@ -71,7 +71,7 @@ for step = 1:tsteps
     end
     abserr(step) = max(abs(trueVal-approxVal));
     relerr(step) = abserr(step)/exp(-3*pi*pi*t);
-    
+  
 end
 
 %% Finite differences for comparison
@@ -126,8 +126,10 @@ xlabel('time step $\tau$','Interpreter','latex')
 ylabel('estimated error','Interpreter','latex')
 cols = cols+1;
 leg = legend('absolute error (FD)','relative error (FD)','absolute error (GSM)','relative error (GSM)')
-set(leg,'Interpreter','latex','Location','southwest');
-%print -depsc 'TimeDependent'
+set(leg,'Interpreter','latex','Location','southeast');
+%print -depsc 'TimeDependentSmallH'
 
 tChebop3 = sum(tChebop3)
 tFiniteDiff = sum(tFiniteDiff)
+
+

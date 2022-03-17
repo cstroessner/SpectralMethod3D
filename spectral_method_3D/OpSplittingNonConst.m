@@ -1,4 +1,4 @@
-function Split = OpSplittingNonConst(L,n,R)
+function [Split,cpErr] = OpSplittingNonConst(L,n,R)
 % input: cell array of coefficient functions L{a,b,c} = @(x,y,z)
 % alpha(x,y,z), resolution n, desired rank R
 % output: cell array of chebyshev coefficients representing the coefficient functions

@@ -13,7 +13,7 @@ fprintf('Please run fast-poisson-solvers-master/code/setup.m by hand to set the 
 x = 2*(rand(1000,1)-0.5); y = 2*(rand(1000,1)-0.5); z = 2*(rand(1000,1)-0.5);
 
 %% iterate over different values of n
-for nn = [10,30,50,150]
+for nn = [11,31,51,151]
 n = nn*[1,1,1];
 uTrue = @(x,y,z) sin(pi*x).*sin(pi*y).*sin(pi*z);
 f = @(x,y,z) -3*pi*pi*sin(pi*x).*sin(pi*y).*sin(pi*z);
@@ -51,7 +51,7 @@ for i = 1:1000
     errRec(i) = abs(funeval(uRec,x(i),y(i),z(i))-uTrue(x(i),y(i),z(i)));
 end
 errRec = max(errRec);
-fprintf('For n=%3.i recursive uses %.2d seconds and achieves an error of %.2d .\n',nn,timeRec,errRec)
+fprintf('For n=%3.i recursive uses %.2d seconds and achieves an error of %.2d the matrix L1y has condition %.2d.\n',nn,timeRec,errRec,condest(opLCP{1,2}))
 
 if nn < 60
 % run backslash after reshape and meassure the runtime

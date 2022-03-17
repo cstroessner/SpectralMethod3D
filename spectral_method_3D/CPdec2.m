@@ -2,12 +2,16 @@ function [U,V,W,cpErr] = CPdec2(T,r)
 % Computes the CP decomposition of the tensor T with rank r using the
 % Levenberg- Marquardt method.
 
-n = size(T);
-U = rand([n(1),r]);
-V = rand([n(2),r]);
-W = rand([n(3),r]);
+U = cpd(T,r);
+V = U{2};
+W = U{3};
+U = U{1};
 
-[U,V,W] = LevMarMet(T,U,V,W);
+% n = size(T);
+% U = rand([n(1),r]);
+% V = rand([n(2),r]);
+% W = rand([n(3),r]);
+%[U,V,W] = LevMarMet(T,U,V,W);
 
 TT = CPtoFull(U,V,W);
 cpErr = max(abs(T-TT),[],'all')

@@ -22,7 +22,7 @@ frontbc = @(x,y) dirichletData(x,y,-1);
 backbc = @(x,y) dirichletData(x,y,1);
 
 % build the linear operator and solve the PDE
-Niters = 1; Ns = 10:10:150;
+Niters = 1; Ns = 11:10:151;
 for N = Ns
 N
 n = [N,N,N];
@@ -65,27 +65,28 @@ for samples = 1:1000
 end
 errEvaluation(Niters) = max(errFunctionTmp);
 errInterpolation(Niters) = max(errInterpolationTmp);
+conditions(Niters) = condest(opLCP{1,2});
 Niters = Niters + 1;
 end
 
-% plot errors
+%% plot errors
 set(gca,'fontsize',10)
 cols = 1;
 set(figure(1), 'Position', [0 0 470 400])
-semilogy(Ns,errEvaluation,'r',Ns,errInterpolation,'b')
+semilogy(10:10:150,errEvaluation,'r',10:10:150,errInterpolation,'b')
 xlabel('n')
 ylabel('error')
 cols = cols+1;
 leg = legend('$||u-u^*||_\infty$','$||\tilde{u}-u^*||_\infty$');
 set(leg,'Interpreter','latex','Location','northeast');
-xlim([Ns(1),Ns(end)]);
+xlim([10,150]); ylim([10^(-15),10^0]);
 %print -depsc 'HelmholtzError'
 
 % plot solution
 figure(2)
 [X,Y] = meshgrid(-1:0.05:1,-1:0.05:1);
 Z = utrue(X,Y,1/4);
-s=surf(X,Y,Z,'FaceAlpha',0.5)
+s = surf(X,Y,Z,'FaceAlpha',0.5)
 v = [-5 -3 5];
 [caz,cel] = view(v)
 %print -depsc 'HelmholtzSolution'
